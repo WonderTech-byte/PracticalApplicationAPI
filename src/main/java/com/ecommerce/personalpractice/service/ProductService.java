@@ -4,6 +4,7 @@ import com.ecommerce.personalpractice.model.Product;
 import com.ecommerce.personalpractice.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -20,6 +21,18 @@ public class ProductService {
 
     public void  saveProduct(Product product) {
         productRepository.save(product);
+    }
+
+    public Product findById(Long id){
+        return productRepository.findById(id).get();
+    }
+
+    public List<Product> findByName( String name){
+        return productRepository.findByNameIgnoreCase(name);
+    }
+
+    public List<Product> findByCategoryId(String category){
+        return productRepository.findByDescription(category);
     }
 
 

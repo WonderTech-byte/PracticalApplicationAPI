@@ -16,15 +16,15 @@ public class PersonalPracticeApplication {
 
     }
 
-    @Bean
-    CommandLineRunner loadData(ProductService productService) {
-        return args -> {
-            productService.saveProduct(new Product(0, "Laptop", "Gaming Laptop", 1500.0));
-            productService.saveProduct(new Product(0, "Phone", "Smartphone", 800.0));
-            productService.saveProduct(new Product(0, "Headphones", "Noise Cancelling", 200.0));
-
-            System.out.println("Dummy products added!");
-        };
-    }
+//    @Bean
+//    CommandLineRunner loadData(ProductService productService) {
+//        return args -> {
+//            productService.saveProduct(new Product(0, "Laptop", "Gaming Laptop", 1500.0));
+//            productService.saveProduct(new Product(0, "Phone", "Smartphone", 800.0));
+//            productService.saveProduct(new Product(0, "Headphones", "Noise Cancelling", 200.0));
+//
+//            System.out.println("Dummy products added!");
+//        };
+//    }
 
 }
