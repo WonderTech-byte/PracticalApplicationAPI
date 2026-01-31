@@ -4,7 +4,7 @@ import com.ecommerce.personalpractice.model.Product;
 import com.ecommerce.personalpractice.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+
 
 import java.util.List;
 
@@ -19,10 +19,6 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public void  saveProduct(Product product) {
-        productRepository.save(product);
-    }
-
     public Product findById(Long id){
         return productRepository.findById(id).get();
     }
@@ -31,9 +27,23 @@ public class ProductService {
         return productRepository.findByNameIgnoreCase(name);
     }
 
-    public List<Product> findByCategoryId(String category){
+    public List<Product> findByCategory(String category){
         return productRepository.findByDescription(category);
     }
 
+    public List<Product> findByPrice(int price){
+        return productRepository.findByPrice(price);
+    }
 
+    public Product create(Product product){
+        return productRepository.save(product);
+    }
+
+    public String deleteById(Long id){
+        if(productRepository.findById(id).isPresent()){
+            productRepository.deleteById(id);
+            return "product deleted successfully";
+        }
+        return "product not found";
+    }
 }

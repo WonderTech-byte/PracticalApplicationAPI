@@ -4,14 +4,10 @@ import com.ecommerce.personalpractice.model.Product;
 import com.ecommerce.personalpractice.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Controller
 @RestController
@@ -37,6 +33,23 @@ public class ProductController {
 
     @GetMapping("product/category/{category}")
     public List<Product> findByCategory(@PathVariable String category){
-        return productService.findByCategoryId(category);
+        return productService.findByCategory(category);
     }
+
+    @GetMapping("product/price/{price}")
+    public List<Product> findByPrice(@PathVariable int price){
+        return productService.findByPrice(price);
+    }
+
+    @PostMapping("product/save/")
+    public Product saveProduct(@RequestBody Product product){
+        return productService.create(product);
+    }
+
+    @DeleteMapping("product/delete/id/{id}")
+    public String deleteProduct(@PathVariable long id){
+        return productService.deleteById(id);
+    }
+
+
 }
