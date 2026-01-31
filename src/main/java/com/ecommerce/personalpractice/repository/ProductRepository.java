@@ -12,4 +12,12 @@ public interface ProductRepository  extends JpaRepository<Product, Long> {
     List<Product> findByNameIgnoreCase(String name);
 
     List<Product> findByDescription(String description);
+
+    List<Product> findByPrice(int price);
+
+    String deleteProductByid(Long id);
+
+
+
+
 }
